@@ -25,5 +25,6 @@ alias emc="emacs -nw"
 
 # Others
 alias la="ls -ltra"
+alias gap="git add --patch"
 alias gst="git status -bs"
 alias tmux="tmux -2"
