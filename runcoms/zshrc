@@ -1,13 +1,29 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Add home dirs to path
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/home/amnesia/.bin"
+export XDG_CONFIG_HOME="/usr/home/amnesia/.config"
+export XDG_DATA_HOME="/usr/home/amnesia/.local/share"
+
+# TODO: Should this be neovim-remote?
+export EDITOR='nvim'
+
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+export JAVA_VERSION=1.8
+
+# Enable colors and such for git diffs
+MORE="-erX" ; export MORE
+
+# Editor specific
+alias vi="nvim"
+alias vim="nvim"
+alias emc="emacs -nw"
+
+# Others
+alias la="ls -ltra"
+alias gst="git status -bs"
+alias tmux="tmux -2"

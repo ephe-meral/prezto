@@ -1,0 +1,33 @@
+# Based on sorin & minimal, and simply made more minimal :P
+
+function prompt_yagni_precmd {
+  git-info
+}
+
+function prompt_yagni_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+
+  # Add hook for calling git-info before each command.
+  add-zsh-hook precmd prompt_yagni_precmd
+
+  zstyle ':prezto:module:git:info' verbose 'yes'
+  zstyle ':prezto:module:git:info:clean' format '%F{green}>%f'
+  zstyle ':prezto:module:git:info:dirty' format '%F{red}>%f'
+  zstyle ':prezto:module:git:info:keys' format \
+    'status' '%C%D'
+
+  zstyle ':prezto:module:editor:info:completing' format '%F{blue}...%f'
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{white}>%f%b'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{white}<%f%b'
+
+  # Define prompts.
+  PROMPT='${(e)${git_info[status]}:-">"}${editor_info[keymap]} '
+  RPROMPT=''
+}
+
+prompt_yagni_setup "$@"
