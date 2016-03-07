@@ -9,7 +9,9 @@ export XDG_CONFIG_HOME="/usr/home/amnesia/.config"
 export XDG_DATA_HOME="/usr/home/amnesia/.local/share"
 
 # TODO: Should this be neovim-remote?
-export EDITOR='nvim'
+export VISUAL='nvim'
+export EDITOR=$VISUAL
+export GIT_EDITOR=$VISUAL
 
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
