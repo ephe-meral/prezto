@@ -4,7 +4,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Add home dirs to path
-export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/home/amnesia/.bin"
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/home/amnesia/.bin:/home/amnesia/.cargo/bin"
 export XDG_CONFIG_HOME="/usr/home/amnesia/.config"
 export XDG_DATA_HOME="/usr/home/amnesia/.local/share"
 
@@ -30,3 +30,6 @@ alias la="ls -ltra"
 alias gap="git add --patch"
 alias gst="git status -bs"
 alias tmux="tmux -2"
+
+# source the kiex elixir version manager
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
