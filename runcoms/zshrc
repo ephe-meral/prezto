@@ -3,20 +3,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Add home dirs to path
-export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/home/amnesia/.bin:/home/amnesia/.cargo/bin"
-export XDG_CONFIG_HOME="/home/amnesia/.config"
-export XDG_DATA_HOME="/home/amnesia/.local/share"
-
-# TODO: Should this be neovim-remote?
-export VISUAL='nvim'
-export EDITOR=$VISUAL
-export GIT_EDITOR=$VISUAL
-
-export SSH_KEY_PATH="~/.ssh/id_rsa"
-
-export JAVA_VERSION=1.8
-
 # Enable colors and such for git diffs
 MORE="-erX" ; export MORE
 
@@ -35,6 +21,3 @@ alias tmux="tmux -2"
 alias xq="xbps-query --regex -Rs"
 alias xu="sudo xbps-install -Su"
 alias xi="sudo xbps-install -S"
-
-# source the kiex elixir version manager
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"

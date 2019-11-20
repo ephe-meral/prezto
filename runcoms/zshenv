@@ -9,3 +9,13 @@
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# Add home dirs to path
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:$HOME/.bin"
+
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+export JAVA_VERSION=1.8
+
+# Rust stuff
+export PATH="$HOME/.cargo/bin:$PATH"
