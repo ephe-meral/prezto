@@ -109,3 +109,7 @@ function npm() {
 function node() {
   _install_nvm node "$@"
 }
+
+# R (prog lang)
+
+export R_SHELL="/sbin/zsh"

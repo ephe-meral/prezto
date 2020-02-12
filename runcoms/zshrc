@@ -17,6 +17,9 @@ alias gap="git add --patch"
 alias gst="git status -bs"
 alias tmux="tmux -2"
 
+# Default C compiler
+alias cc="clang"
+
 # XBPS (Voidlinux)
 alias xq="xbps-query --regex -Rs"
 alias xu="sudo xbps-install -Su"
