@@ -11,10 +11,15 @@ alias vi="nvim"
 alias vim="nvim"
 alias emc="emacs -nw"
 
-# Others
-alias la="ls -ltra"
+# GIT specific
+# NB: Other used commands (from plugin?) are:
+# gco (checkout), gpc (push), gcm (commit), gcp (cherry-pick), gm (merge), gr (rebase)
 alias gap="git add --patch"
 alias gst="git status -bs"
+alias gpl="git pull"
+
+# Others
+alias la="ls -ltra"
 alias tmux="tmux -2"
 
 # Default C compiler
