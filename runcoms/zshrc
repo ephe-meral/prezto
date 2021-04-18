@@ -13,7 +13,9 @@ alias emc="emacs -nw"
 
 # GIT specific
 # NB: Other used commands (from plugin?) are:
-# gco (checkout), gpc (push), gcm (commit), gcp (cherry-pick), gm (merge), gr (rebase)
+# gco (checkout), gpc (push), gcm (commit), gcp (cherry-pick),
+# gm (merge), gr (rebase), gpp (git pull & push), gp (git push)
+# gpt (git push tags)
 alias gap="git add --patch"
 alias gst="git status -bs"
 alias gpl="git pull"
@@ -29,3 +31,13 @@ alias cc="clang"
 alias xq="xbps-query --regex -Rs"
 alias xu="sudo xbps-install -Su"
 alias xi="sudo xbps-install -S"
+
+# Python version manager (pyenv)
+export PYENV_ROOT="$HOME/.bin/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# LaTeX (TeXLive)
+export PATH="$PATH:/opt/texlive/2020/bin/x86_64-linux"
