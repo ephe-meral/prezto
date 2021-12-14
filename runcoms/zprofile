@@ -127,3 +127,4 @@ function node() {
 # R (prog lang)
 
 export R_SHELL="/sbin/zsh"
+eval "$(/opt/homebrew/bin/brew shellenv)"
