@@ -127,4 +127,6 @@ function node() {
 # R (prog lang)
 
 export R_SHELL="/sbin/zsh"
+
+# MAC: Enable homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"

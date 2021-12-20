@@ -19,3 +19,4 @@ export JAVA_VERSION=1.8
 
 # Rust stuff
 export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"
