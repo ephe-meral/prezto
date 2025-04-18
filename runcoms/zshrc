@@ -24,6 +24,45 @@ alias gpl="git pull"
 alias la="ls -ltra"
 alias tmux="tmux -2"
 
+# Pass
+alias pc="pass show -c"
+# Fuzzy pass find and copy - finds password entries and copies selected one to clipboard
+# Needs fzf (brew install fzf)
+pfc() {
+    # Debug: Check if password store exists
+    if [ ! -d "$HOME/.password-store" ]; then
+        echo "Password store not found at $HOME/.password-store"
+        return 1
+    fi
+
+    local entries=$(find -L "$HOME/.password-store" -type f -name "*.gpg" | \
+        sed -e "s|$HOME/.password-store/||" -e 's|\.gpg$||')
+    
+    # Debug: Check if we found any entries
+    if [ -z "$entries" ]; then
+        echo "No password entries found"
+        return 1
+    fi
+
+    if [ "$#" -gt 0 ]; then
+        for term in "$@"; do
+            entries=$(echo "$entries" | grep -i "$term")
+        done
+    fi
+
+    # Debug: Check filtered entries
+    if [ -z "$entries" ]; then
+        echo "No entries match your search terms"
+        return 1
+    fi
+
+    local selected=$(echo "$entries" | fzf --height 40% --reverse)
+    if [ -n "$selected" ]; then
+        echo "Copying password for: $selected"
+        pass show -c "$selected"
+    fi
+}
+
 # Default C compiler
 alias cc="clang"
 
@@ -33,11 +72,16 @@ alias xu="sudo xbps-install -Su"
 alias xi="sudo xbps-install -S"
 
 # Python version manager (pyenv)
-export PYENV_ROOT="$HOME/.bin/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+#export PYENV_ROOT="$HOME/.bin/pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init -)"
+#fi
+# MAC specific: pyenv
+export PYENV_ROOT="$HOME/.pyenv" 
+export PATH="$PYENV_ROOT/bin:$PATH" 
+eval "$(pyenv init --path)" 
+eval "$(pyenv init -)"
 
 # LaTeX (TeXLive)
 export PATH="$PATH:/opt/texlive/2020/bin/x86_64-linux"
@@ -70,3 +114,8 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+# Enable multiprocessing on mac for some apps (python)
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# Factor
+export PATH=/Applications/factor:"$PATH"
